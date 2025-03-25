@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Móveis Casa & Conforto</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="cabecalho-catalogo text-center py-4">
+        <h1 class="mb-4">Móveis Casa & Conforto</h1>
+        <div class="row justify-content-center">
+          <div class="col-md-6">
+            <div class="input-group mb-3">
+              <input
+                id="cep"
+                type="text"
+                class="form-control"
+                placeholder="Digite o CEP (ex: 01001000)"
+                maxlength="8"
+              />
+            </div>
+            <div id="custo-frete" class="custo-frete"></div>
+            <a href="tabela.html" class="tabela-precos-button"
+              >Tabela de Preços</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <div id="lista-produtos" class="row"></div>
+    </div>
+
+    <footer>
+      <div class="footer-content">
+        <div class="footer-links">
+          <a href="#">Privacidade e Segurança</a>
+          <a href="#">Acompanhar Pedido</a>
+          <a href="#">Devolução e Reembolso</a>
+          <a href="#">Quem somos</a>
+        </div>
+
+        <div class="payment-methods">
+          <h3>FORMAS DE PAGAMENTO</h3>
+          <div class="payment-icons">
+            <img src="img/pagamento.png" alt="Visa" />
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

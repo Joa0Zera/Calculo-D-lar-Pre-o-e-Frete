@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Loja de Móveis - Frete</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f7eee2;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+
+      header {
+        background-color: #81501f;
+        color: white;
+        text-align: center;
+        padding: 20px;
+      }
+
+      h1 {
+        font-size: 32px;
+        font-weight: bold;
+        margin: 0;
+      }
+
+      .container {
+        background: #a3947f;
+        color: white;
+        width: 100%;
+        max-width: 400px;
+        margin: 20px auto;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        text-align: left;
+        flex: 1;
+      }
+
+      h3 {
+        margin-bottom: 20px;
+        font-size: 24px;
+        text-align: center;
+      }
+
+      h4 {
+        margin-bottom: 20px;
+        font-size: 15px;
+        text-align: center;
+      }
+      table {
+        width: 100%;
+        margin-bottom: 20px;
+        border-collapse: collapse;
+      }
+
+      th,
+      td {
+        border: 1px solid #ddd;
+        padding: 12px;
+        text-align: left;
+      }
+
+      th {
+        background-color: #81501f;
+        color: white;
+      }
+
+      .button {
+        background-color: #81501f;
+        border: none;
+        padding: 12px;
+        width: 100%;
+        margin-top: 10px;
+        cursor: pointer;
+        color: white;
+        font-size: 18px;
+        border-radius: 5px;
+      }
+
+      .button:hover {
+        background-color: #6d3e16;
+      }
+
+      .back-button {
+        display: block;
+        width: 200px;
+        height: 40px;
+        margin: 20px auto;
+        text-decoration: none;
+        padding: 12px;
+        background: #a3947f;
+        color: white;
+        border-radius: 10px;
+        font-size: 16px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      }
+
+      .back-button:hover {
+        background: #81501f;
+      }
+
+      footer {
+        font-family: Arial, sans-serif;
+        background-color: #81501f;
+        color: white;
+        padding: 30px 20px;
+        border-top: 1px solid #e7e7e7;
+        text-align: center;
+        margin-top: auto;
+      }
+
+      .footer-content {
+        max-width: 800px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .footer-links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px 30px;
+      }
+
+      .footer-links a {
+        color: rgb(236, 231, 231);
+        text-decoration: none;
+        font-size: 15px;
+        white-space: nowrap;
+      }
+
+      .footer-links a:hover {
+        text-decoration: underline;
+      }
+
+      .payment-methods h3 {
+        margin: 0 0 10px 0;
+        font-size: 16px;
+        font-weight: bold;
+      }
+
+      .payment-icons img {
+        height: 50px;
+        margin: 0 5px;
+      }
+
+      @media (max-width: 600px) {
+        .container {
+          width: 90%;
+          margin: 20px auto;
+          padding: 15px;
+        }
+
+        .footer-links {
+          flex-direction: column;
+          gap: 10px;
+          align-items: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Móveis Casa & Conforto</h1>
+    </header>
+
+    <div class="container">
+      <h3>Frete por Região</h3>
+      <h4>Valor dólar atual (US$5,74)</h4>
+      <table>
+        <tr>
+          <th>Região</th>
+          <th>Frete (R$)</th>
+        </tr>
+        <tr>
+          <td>Norte</td>
+          <td id="frete-norte">20.00</td>
+        </tr>
+        <tr>
+          <td>Nordeste</td>
+          <td id="frete-nordeste">30.00</td>
+        </tr>
+        <tr>
+          <td>Sul</td>
+          <td id="frete-sul">25.00</td>
+        </tr>
+        <tr>
+          <td>Sudeste</td>
+          <td id="frete-sudeste">15.00</td>
+        </tr>
+        <tr>
+          <td>Centro-Oeste</td>
+          <td id="frete-centro-oeste">18.00</td>
+        </tr>
+      </table>
+      <input
+        id="cep"
+        type="text"
+        class="form-control mt-4"
+        placeholder="Digite o CEP (ex: 01001000)"
+        maxlength="11"
+      />
+      <button class="button" onclick="calcularFrete()">Calcular Frete</button>
+      <p id="resultado-frete" class="mt-3"></p>
+    </div>
+
+    <a href="index.html" class="back-button">Voltar para o início</a>
+
+    <footer>
+      <div class="footer-content">
+        <div class="footer-links">
+          <a href="#">Privacidade e Segurança</a>
+          <a href="#">Acompanhar Pedido</a>
+          <a href="#">Devolução e Reembolso</a>
+          <a href="#">Quem somos</a>
+        </div>
+
+        <div class="payment-methods">
+          <h3>FORMAS DE PAGAMENTO</h3>
+          <div class="payment-icons">
+            <img src="img/pagamento.png" alt="Visa" />
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const taxasFrete = { N: 20, NE: 30, S: 25, SE: 15, CO: 18 };
+      const mapaRegioes = {
+        AC: "N",
+        AM: "N",
+        AP: "N",
+        PA: "N",
+        RO: "N",
+        RR: "N",
+        TO: "N",
+        AL: "NE",
+        BA: "NE",
+        CE: "NE",
+        MA: "NE",
+        PB: "NE",
+        PE: "NE",
+        PI: "NE",
+        RN: "NE",
+        SE: "NE",
+        PR: "S",
+        RS: "S",
+        SC: "S",
+        ES: "SE",
+        MG: "SE",
+        RJ: "SE",
+        SP: "SE",
+        DF: "CO",
+        GO: "CO",
+        MT: "CO",
+        MS: "CO",
+      };
+
+      async function buscarEstadoPorCEP(cep) {
+        try {
+          const resposta = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
+          const dados = await resposta.json();
+          if (dados.erro) throw new Error("CEP não encontrado.");
+          return dados.uf;
+        } catch (erro) {
+          console.error("Erro ao buscar CEP:", erro);
+          return null;
+        }
+      }
+
+      async function calcularFrete() {
+        const cep = document.getElementById("cep").value.replace(/\D/g, "");
+        if (cep.length !== 8) {
+          document.getElementById("resultado-frete").textContent =
+            "Por favor, insira um CEP válido.";
+          return;
+        }
+        const estado = await buscarEstadoPorCEP(cep);
+        if (estado) {
+          const regiao = mapaRegioes[estado];
+          const custoFrete = taxasFrete[regiao];
+          document.getElementById(
+            "resultado-frete"
+          ).textContent = `Frete para ${estado}: R$ ${custoFrete.toFixed(2)}`;
+        } else {
+          document.getElementById("resultado-frete").textContent =
+            "CEP inválido ou não encontrado.";
+        }
+      }
+    </script>
+  </body>
+</html>
